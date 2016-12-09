@@ -19,7 +19,6 @@ ActiveRecord::Schema.define(version: 20161208030222) do
     t.date   "birthday"
     t.string "email"
     t.string "password"
-    t.string "address"
   end
 
   create_table "wishitems", force: :cascade do |t|

@@ -24,8 +24,12 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="/login">Log In</a></li>
-            <li><a href="/signup">Sign Up</a></li>
+            <% if Helpers.logged_in?(session) %>
+              <li><a href="/logout">Log Out</a></li>
+            <% else %>
+              <li><a href="/login">Log In</a></li>
+              <li><a href="/signup">Sign Up</a></li>
+            <% end %>
           </ul>
         </div><!--/.nav-collapse -->
       </div>

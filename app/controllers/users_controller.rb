@@ -22,7 +22,7 @@ class UsersController < ApplicationController
     erb :'/user/show_user'
   end
 
-  get 'logout' do
+  get '/logout' do
     if session[:user_id]
       session.clear
       redirect '/login'

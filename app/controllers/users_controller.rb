@@ -1,52 +1,64 @@
 class UsersController < ApplicationController
 
-  get '/signup' do
+  get "/signup" do
     if session[:user_id]
-      redirect '/show'
+      @user = User.find(session[:user_id])
+      redirect "/#{@user.slug}"
+      # redirect "/show"
     else
-      erb :'/user/create_user'
+      erb :"/user/create_user"
     end
   end
 
-  post '/signup' do
+  post "/signup" do
     @user = User.new(username: params[:username], email: params[:email], firstname: params[:firstname], lastname: params[:lastname], password: params[:password], birthday: params[:birthday])
     if @user.save
       session[:user_id] = @user.id
-      redirect '/show'
+      @user = User.find(session[:user_id])
+      redirect "/#{@user.slug}"
+      # redirect "/show"
     else 
-      redirect '/signup'
+      redirect "/signup"
     end
   end
 
-  get '/login' do
+  get "/login" do
     if session[:user_id]
-      redirect '/show'
+      @user = User.find(session[:user_id])
+      redirect "/#{@user.slug}"
     else 
-      erb :'/user/login'
+      erb :"/user/login"
     end
   end
 
-  post '/login' do
+  post "/login" do
     user = User.find_by(username: params[:username])
     if user
       session[:user_id] = user.id
-      redirect '/show'
+      # redirect "/#{user.slug}"
+      redirect "/show"
     else
-      redirect '/login'
+      redirect "/login"
     end
   end
 
-  get '/show' do
-    erb :'/user/show_user'
+  get "/:slug" do
+    @user = User.find_by_slug(params[:slug])
+    erb :"/user/show_user"
   end
 
-  get '/logout' do
-    if session[:user_id]
-      session.clear
-      redirect '/login'
-    else 
-      redirect '/'
+  get "/logout" do
+    session.clear
+    redirect "/"
+  end
+
+  helpers do 
+    def logged_in?
+      !!session[:user_id]
+    end
+
+    def current_user
+      User.find(session[:user_id])
     end
   end
-
 end

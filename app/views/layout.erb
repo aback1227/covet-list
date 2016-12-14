@@ -24,8 +24,8 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
-            <% if Helpers.logged_in?(session) %>
-              <li><a href="<%= Helpers.current_user(session).username %>"><%= Helpers.current_user(session).username %></a></li>
+            <% if logged_in? %>
+              <li><a href="<%= current_user.username %>"><%= current_user.username %></a></li>
               <li><a href="/logout">Log Out</a></li>
             <% else %>
               <li><a href="/login">Log In</a></li>

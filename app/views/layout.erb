@@ -25,7 +25,7 @@
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
             <% if logged_in? %>
-              <li><a href="<%= current_user.username %>"><%= current_user.username %></a></li>
+              <li><a href="/user/<%= current_user.slug %>"><%= current_user.username %></a></li>
               <li><a href="/logout">Log Out</a></li>
             <% else %>
               <li><a href="/login">Log In</a></li>

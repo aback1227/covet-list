@@ -18,6 +18,8 @@ class WishlistsController < ApplicationController
   end
 
   get '/wishlists/:id' do
+    @wishlist = Wishlist.find_by_id(params[:id])
+    erb :'/wishlist/show_wishlist'
   end
 
 end

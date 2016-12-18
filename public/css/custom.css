@@ -1,8 +1,9 @@
-.form-signup {
-  max-width: 400px;
-  margin: 0 auto;
-}
-
 body {
   padding-top: 100px;
 }
+
+.col-centered {
+  float: none;
+  margin: 0 auto;
+}
+

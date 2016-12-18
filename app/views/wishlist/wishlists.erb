@@ -1,0 +1,14 @@
+<div class="container col-centered col-md-8 text-center">
+  <div class="row">
+    <% current_user.wishlists.each do |wishlist| %>
+      <div class="col-md-12 panel panel-info">
+        <div class="panel-heading">
+          <%= wishlist.title %>
+        </div>
+        <div class="panel-body">
+          <%= wishlist.description %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -1,5 +1,5 @@
 <div class="container text-center">
-  Welcome, <%= current_user.firstname %> <%= current_user.lastname %>.
+  <h2>Welcome, <%= current_user.firstname %> <%= current_user.lastname %>.</h2>
   <div class="container col-centered col-md-8 text-center">
     <div class="row">
       <% current_user.wishlists.each do |wishlist| %>

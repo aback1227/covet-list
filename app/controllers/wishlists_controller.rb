@@ -5,10 +5,10 @@ class WishlistsController < ApplicationController
 
   post '/wishlists' do
     if logged_in?
-      wishlist = Wishlist.create(title: params[:title], description: params[:description], user_id: session[:user_id])
+      wishlist = Wishlist.new(title: params[:title], description: params[:description], user_id: session[:user_id])
       wishlist.user = current_user
       if wishlist.save
-        redirect "/users/#{current_user.slug}"
+        redirect "/user/#{current_user.slug}"
       else
         redirect '/wishlists/new'
       end

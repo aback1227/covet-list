@@ -1,5 +1,14 @@
-<div class="container">
+
   <h2><%= @wishlist.title %></h2>
   <h4><%= @wishlist.description %></h3>
-  <a href="#" class="btn btn-primary btn-sm" role="button">Add item</a>
-</div>
+  <div class="panel-group">
+    <div class="panel-default panel">
+      <div class="panel-heading">
+        <a href="#collapseForm" data-toggle="collapse">Add an item</a>
+      </div> 
+      <div id="collapseForm" class="collapse panel-collapse">
+        <div class="panel-body">This is the form.</div>
+      </div>
+    </div>    
+  </div>
+

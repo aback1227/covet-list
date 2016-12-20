@@ -1,6 +1,50 @@
 <div class="text-left panel panel-default" style="padding: 10px">
   <p><strong>Title:</strong> <%= @wishlist.title %></p>
   <p><strong>Description:</strong> <%= @wishlist.description %></p>
-  <a href="#" class="btn btn-primary btn-sm" role="button">Add item</a>
+  <a href="#collapseForm" class="btn btn-primary btn-sm" data-toggle="collapse">Add to list</a>
+  <div class="collapse" id="collapseForm" style="padding: 10px">
+    <div class="row">
+      <div class="col-md-8 col-centered">
+        <form method="POST" action="/wishlists/<%=@wishlist.id%>">
+          <div class="form-group">
+            <input class="form-control" type="text" placeholder="Add a title" name="title">
+          </div>
+          <div class="form-group">
+            <input class="form-control" type="text" placeholder="Add a url" name="url"></input>
+          </div>
+          <div class="form-group">
+            <input class="form-control" type="integer" placeholder="Add a quantity" name="quantity"></input>
+          </div>
+          <div class="form-group">
+            <input class="form-control" type="integer" placeholder="Add a price" name="price"></input>
+          </div>
+          <div class="form-group">
+            <input class="form-control" type="integer" placeholder="Add a image url" name="image"></input>
+          </div>
+          <div class="form-group">
+            <textarea class="form-control" type="integer" placeholder="Notes" name="note" rows="2"></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary btn-block btn-sm">Add</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="row" style="padding: 10px">
+    <% @wishlist.wish_items.each do |wishitem| %>
+      <div class="col-md-12 panel panel-info padded">
+        <div class="panel-heading"><%= wishitem.title %></div>
+        <div class="panel-body">
+          <ul>
+            <li><label>Price:</label> $<%= wishitem.price %></li>
+            <li><label>URL:</label> <%= wishitem.url %></li>
+            <li><label>Image:</label> <%= wishitem.image %></li>
+            <li><label>Quantity:</label> <%= wishitem.quantity %></li>
+            <li><label>Note:</label> <%= wishitem.note %></li>
+          </ul>
+        </div>
+      </div>
+    <% end %>
+  </div>
 </div>
 

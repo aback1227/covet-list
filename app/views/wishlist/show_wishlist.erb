@@ -1,14 +1,6 @@
-
-  <h2><%= @wishlist.title %></h2>
-  <h4><%= @wishlist.description %></h3>
-  <div class="panel-group">
-    <div class="panel-default panel">
-      <div class="panel-heading">
-        <a href="#collapseForm" data-toggle="collapse">Add an item</a>
-      </div> 
-      <div id="collapseForm" class="collapse panel-collapse">
-        <div class="panel-body">This is the form.</div>
-      </div>
-    </div>    
-  </div>
+<div class="text-left panel panel-default" style="padding: 10px">
+  <p><strong>Title:</strong> <%= @wishlist.title %></p>
+  <p><strong>Description:</strong> <%= @wishlist.description %></p>
+  <a href="#" class="btn btn-primary btn-sm" role="button">Add item</a>
+</div>
 

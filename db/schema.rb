@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 20161214034717) do
     t.string "password_digest"
   end
 
-  create_table "wishitems", force: :cascade do |t|
+  create_table "wish_items", force: :cascade do |t|
     t.string  "title"
     t.string  "url"
     t.string  "note"

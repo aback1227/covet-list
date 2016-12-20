@@ -1,6 +1,6 @@
-class CreateWishitems < ActiveRecord::Migration[5.0]
+class CreateWishItems < ActiveRecord::Migration[5.0]
   def change
-    create_table :wishitems do |t|
+    create_table :wish_items do |t|
       t.string :title
       t.string :url
       t.string :note

@@ -29,6 +29,16 @@ class WishItemsController < ApplicationController
     end
   end
 
+  post '/wishitems/:id/delete' do
+    @wishlist = current_wishitem.wishlist.id
+    if logged_in?
+      current_wishitem.delete
+      redirect "/wishlists/#{@wishlist}"
+    else 
+      redirect '/login'
+    end
+  end
+
   helpers do 
     def current_wishitem
       WishItem.find_by_id(params[:id])

@@ -1,9 +1,10 @@
 <h2>
   Welcome, <%= current_user.firstname %> <%= current_user.lastname %>
 </h2>
+<br>
 <div class="row">
   <% current_user.wishlists.each do |wishlist| %>
-    <div class="col-md-12 panel panel-info">
+    <div class="col-xs-8 col-lg-4 col-sm-5 col-md-4 panel panel-info col-centered" style="padding: 0px;">
       <div class="panel-heading">
         <a href="/wishlists/<%= wishlist.id %>"><%= wishlist.title %></a>
       </div>

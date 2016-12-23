@@ -7,8 +7,7 @@ body {
   margin: 0 auto;
 }
 
-.col-md-12 {
-  padding-left: 0;
-  padding-right: 0;
+#show-wishlists > .col-md-4 {
+  padding-right:0;
+  padding-left:0;
 }
-

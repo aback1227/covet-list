@@ -1,3 +1,9 @@
+<ol class="breadcrumb" style="margin-top: -30px">
+  <li><a href="/">Home</a></li>
+  <li><a href="/user/<%=current_user.username%>"><%=current_user.username%></a></li>
+  <li class="active">Make List</li>
+</ol>
+
 <div class="col-md-4 col-centered">
   <form method="POST" action="/wishlists">
     <div class="form-group">

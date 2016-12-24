@@ -1,4 +1,11 @@
-<div class="col-md-4 col-centered" style="padding: 20px">
+<ol class="breadcrumb" style="margin-top: -30px">
+  <li><a href="/">Home</a></li>
+  <li><a href="/user/<%=current_user.username%>"><%=current_user.username%></a></li>
+  <li><a href="/wishlists/<%=@wishitem.wishlist.id%>/wishitems"><%=@wishitem.wishlist.title%></a></li>
+  <li class="active">Edit Item</li>
+</ol>
+
+<div class="col-md-4 col-centered" style="padding: 0px 20px 20px 20px">
   <h2>Edit Item</h2>
   <form method="POST" action="/wishitems/<%=@wishitem.id%>">
     <input id="hidden" type="hidden" name="_method" value="patch">

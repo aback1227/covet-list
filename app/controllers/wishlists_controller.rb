@@ -30,7 +30,7 @@ class WishlistsController < ApplicationController
     wishlist = current_wishlist
     if logged_in?
       if wishlist_updated
-        redirect "/user/#{wishlist.user}"
+        redirect "/user/#{wishlist.user.slug}"
       else
         redirect "/wishlists/#{current_wishlist.id}/edit"
       end

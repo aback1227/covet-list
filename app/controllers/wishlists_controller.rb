@@ -38,14 +38,4 @@ class WishlistsController < ApplicationController
       redirect '/login'
     end
   end
-  
-  helpers do 
-    def current_wishlist
-      Wishlist.find_by_id(params[:id])
-    end
-
-    def wishlist_updated
-      current_wishlist.update(title: params[:title], description: params[:description])
-    end
-  end
 end

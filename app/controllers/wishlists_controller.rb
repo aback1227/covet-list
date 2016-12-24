@@ -38,4 +38,14 @@ class WishlistsController < ApplicationController
       redirect '/login'
     end
   end
+
+  post '/wishlists/:id/delete' do
+    wishlist = current_wishlist
+    if logged_in?
+      current_wishlist.delete
+      redirect "/user/#{wishlist.user.slug}"
+    else
+      redirect '/login'
+    end
+  end
 end

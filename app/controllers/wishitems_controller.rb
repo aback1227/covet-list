@@ -1,11 +1,16 @@
 class WishItemsController < ApplicationController
 
-  get '/wishitems/new' do
-    erb :'/wishitem/create_wishitem'
-  end
+  # get '/wishitems/new' do
+  #   erb :'/wishitem/create_wishitem'
+  # end
 
-  get '/wishitems/:id' do
-    erb :'/wishitem/show_wishitem'
+  # get '/wishitems/:id' do
+  #   erb :'/wishitem/show_wishitem'
+  # end
+
+  get '/wishlists/:id/wishitems' do
+    @wishlist = current_wishlist
+    erb :'/wishlist/show_wishlist'
   end
 
   get '/wishitems/:id/edit' do
@@ -17,10 +22,24 @@ class WishItemsController < ApplicationController
     end
   end
 
+  post '/wishlists/:id/wishitems' do
+    if logged_in?
+      wishitem = WishItem.new(title: params[:title], url: params[:url], price: params[:price], quantity: params[:quantity], image: params[:image], note: params[:note])
+      wishitem.wishlist = current_wishlist
+      if wishitem.save
+        redirect "/wishlists/#{wishitem.wishlist.id}/wishitems"
+      else 
+        redirect '/wishlists'
+      end
+    else
+      redirect '/login'
+    end
+  end
+
   post '/wishitems/:id' do
     if logged_in?
       if wishitem_updated
-        redirect "/wishlists/#{current_wishitem.wishlist.id}"
+        redirect "/wishlists/#{current_wishitem.wishlist.id}/wishitems"
       else 
         redirect "/wishitems/#{current_wishitem.id}/edit"
       end
@@ -33,7 +52,7 @@ class WishItemsController < ApplicationController
     @wishlist = current_wishitem.wishlist.id
     if logged_in?
       current_wishitem.delete
-      redirect "/wishlists/#{@wishlist}"
+      redirect "/wishlists/#{@wishlist}/wishitems"
     else 
       redirect '/login'
     end

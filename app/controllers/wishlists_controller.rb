@@ -17,22 +17,35 @@ class WishlistsController < ApplicationController
     end
   end
 
-  get '/wishlists/:id' do
-    @wishlist = Wishlist.find_by_id(params[:id])
-    erb :'/wishlist/show_wishlist'
+  get '/wishlists/:id/edit' do
+    if logged_in?
+      @wishlist = current_wishlist
+      erb :'/wishlist/edit_wishlist'
+    else
+      redirect '/login'
+    end
   end
 
   post '/wishlists/:id' do
+    wishlist = current_wishlist
     if logged_in?
-      wishitem = WishItem.new(title: params[:title], url: params[:url], price: params[:price], quantity: params[:quantity], image: params[:image], note: params[:note])
-      wishitem.wishlist = Wishlist.find_by_id(params[:id])
-      if wishitem.save
-        redirect "/wishlists/#{wishitem.wishlist.id}"
-      else 
-        redirect '/wishlists'
+      if wishlist_updated
+        redirect "/user/#{wishlist.user}"
+      else
+        redirect "/wishlists/#{current_wishlist.id}/edit"
       end
     else
       redirect '/login'
+    end
+  end
+  
+  helpers do 
+    def current_wishlist
+      Wishlist.find_by_id(params[:id])
+    end
+
+    def wishlist_updated
+      current_wishlist.update(title: params[:title], description: params[:description])
     end
   end
 end

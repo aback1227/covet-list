@@ -27,7 +27,7 @@
               <button type="submit" class="btn btn-primary btn-block btn-sm">Add</button>
             </form>
           </div>
-        </div>
+        </div><!--row-->
       </div>
     </div>
 
@@ -38,7 +38,16 @@
       <div class="row" style="padding: 10px">
         <% @wishlist.wish_items.each do |wishitem| %>
           <div class="col-md-12 panel panel-info" style="padding: 0px">
-            <div class="panel-heading"><%= wishitem.title %></div>
+            <div class="panel-heading">
+              <%= wishitem.title %>
+              <div class="edit-glyphicons pull-right">
+                <form method="POST" action="/wishitems/<%=wishitem.id%>/delete" onsubmit="return confirm('Are you sure you want to delete?')">
+                  <a href="/wishitems/<%=wishitem.id%>/edit" class="btn btn-primary btn-xs" role="button"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a>
+                  <input id="hidden" type="hidden" name="_method" value="delete">
+                  <input class="btn btn-danger btn-xs" type="submit" name="delete" value="Delete">
+                </form>
+              </div>
+            </div><!--panel-heading-->
             <div class="panel-body">
               <div class="row">
                 <div class="col-lg-6 col-md-5 col-sm-6 col-xs-6">
@@ -53,13 +62,6 @@
                   </ul>
                 </div>
               </div><!--row-->
-              <div class="text-center" style="padding: 10px">
-                <form method="POST" action="/wishitems/<%=wishitem.id%>/delete" onsubmit="return confirm('Are you sure you want to delete?')">
-                  <a href="/wishitems/<%=wishitem.id%>/edit" class="btn btn-primary btn-sm" role="button">Edit</a>
-                  <input id="hidden" type="hidden" name="_method" value="delete">
-                  <input class="btn btn-danger btn-sm" type="submit" name="delete" value="Delete">
-                </form>
-              </div><!--text-center-->
             </div><!--panel-body-->
           </div><!--col-md-12-->
         <% end %>

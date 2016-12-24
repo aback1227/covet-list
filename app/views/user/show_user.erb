@@ -14,8 +14,11 @@
               <div class="panel-heading">
                 <a href="/wishlists/<%= wishlist.id %>/wishitems"><%= wishlist.title %></a>
                 <div class="edit-glyphicons pull-right">
-                  <a href="/wishlists/<%=wishlist.id%>/edit"><span class="glyphicon glyphicon-edit text-danger" aria-hidden="true"></span></a>
-                  <a href="/wishlists/<%=wishlist.id%>/delete"><span class="glyphicon glyphicon-trash text-danger" aria-hidden="true"></span></a>
+                  <form method="POST" action="/wishlists/<%=wishlist.id%>/delete" onsubmit="return confirm('Are you sure you want to delete?')">
+                    <a href="/wishlists/<%=wishlist.id%>/edit" class="btn btn-primary btn-xs" role="button"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a>
+                    <input id="hidden" type="hidden" name="_method" value="delete">
+                    <input class="btn btn-danger btn-xs" type="submit" name="delete" value="Delete">
+                  </form>
                 </div>
               </div>
               <div class="panel-body">

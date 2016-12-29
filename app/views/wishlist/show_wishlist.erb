@@ -6,7 +6,7 @@
 
 <div class="container">
   <div class="row">
-    <% if current_user.username == @wishlist.user.username %>
+    <% if current_user == @wishlist.user %>
       <div class="col-sm-4 col-md-4 panel panel-default" style="margin:0 5px; margin-bottom: 5px">
         <a href="#collapseForm" data-toggle="collapse">Add to list</a>
         <div class="collapse" id="collapseForm" style="padding: 10px">

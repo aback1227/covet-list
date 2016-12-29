@@ -18,11 +18,11 @@ class WishlistsController < ApplicationController
   end
 
   get '/wishlists/:id/edit' do
-    if logged_in?
+    if current_user == current_wishlist.user
       @wishlist = current_wishlist
       erb :'/wishlist/edit_wishlist'
     else
-      redirect '/login'
+      redirect "wishlists/#{current_wishlist.id}/wishitems"
     end
   end
 
@@ -41,11 +41,11 @@ class WishlistsController < ApplicationController
 
   post '/wishlists/:id/delete' do
     wishlist = current_wishlist
-    if logged_in?
+    if current_user == current_wishlist.user
       current_wishlist.delete
       redirect "/user/#{wishlist.user.slug}"
     else
-      redirect '/login'
+      redirect "wishlists/#{current_wishlist.id}/wishitems"
     end
   end
 end

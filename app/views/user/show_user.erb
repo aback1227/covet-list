@@ -1,15 +1,15 @@
 <ol class="breadcrumb" style="margin-top: -30px">
   <li><a href="/">Home</a></li>
-  <li class="active"><%=current_user.username%></li>
+  <li class="active"><%=@user.username%></li>
 </ol>
 
 <div class="container">
   <div class="row">
     <div class="col-sm-4 col-md-4 panel panel-default text-left" style="padding: 10px">
-      <h4 class="text-center"><%=current_user.username%></h4>
+      <h4 class="text-center"><%=@user.username%></h4>
       <ul style="list-style: none;">
-        <li><label>Name:</label> <%= current_user.firstname%> <%= current_user.lastname%></li>
-        <li><label>Birthday:</label> <%= current_user.birthday.strftime("%B %d, %Y")%></li>
+        <li><label>Name:</label> <%= @user.firstname%> <%= @user.lastname%></li>
+        <li><label>Birthday:</label> <%= @user.birthday.strftime("%B %d, %Y")%></li>
       </ul>
       <div class="text-center">
         <a role="button" class="btn btn-primary btn-xs" href="/wishlists/new">Make new list</a>
@@ -17,17 +17,21 @@
     </div>
     <div class="col-md-8 col-sm-8">
         <div class="row" style="margin: 0 10px">
-          <% current_user.wishlists.each do |wishlist| %>
+          <% @user.wishlists.each do |wishlist| %>
             <div class="col-md-12 panel panel-default" style="padding: 0px">
               <div class="panel-heading">
-                <a href="/wishlists/<%= wishlist.id %>/wishitems" style="margin-left: 60px"><%= wishlist.title %></a>
-                <div class="edit-glyphicons" style="float: right">
-                  <form method="POST" action="/wishlists/<%=wishlist.id%>/delete" onsubmit="return confirm('Are you sure you want to delete?')">
-                    <a href="/wishlists/<%=wishlist.id%>/edit" class="btn btn-primary btn-xs" role="button"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a>
-                    <input id="hidden" type="hidden" name="_method" value="delete">
-                    <input class="btn btn-danger btn-xs" type="submit" name="delete" value="Delete">
-                  </form>
-                </div>
+                <% if current_user.username == @user.username %>
+                  <a href="/wishlists/<%= wishlist.id %>/wishitems" style="margin-left: 60px"><%= wishlist.title %></a>
+                  <div class="edit-glyphicons" style="float: right">
+                    <form method="POST" action="/wishlists/<%=wishlist.id%>/delete" onsubmit="return confirm('Are you sure you want to delete?')">
+                      <a href="/wishlists/<%=wishlist.id%>/edit" class="btn btn-primary btn-xs" role="button"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a>
+                      <input id="hidden" type="hidden" name="_method" value="delete">
+                      <input class="btn btn-danger btn-xs" type="submit" name="delete" value="Delete">
+                    </form>
+                  </div>
+                <% else %>
+                  <a href="/wishlists/<%= wishlist.id %>/wishitems"><%= wishlist.title %></a>
+                <% end %>
               </div>
               <div class="panel-body">
                 <%= wishlist.description %>

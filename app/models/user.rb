@@ -1,4 +1,9 @@
 class User < ActiveRecord::Base
+  validates :email, :username, uniqueness: true
+  validates :email, format: {with: /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/}
+  validates :password, :username, :email, :firstname, :lastname, :birthday, presence: true
+  validates :password, length: {minimum: 6}
+
   has_many :wishlists
   has_secure_password
   

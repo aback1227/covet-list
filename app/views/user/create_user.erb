@@ -24,3 +24,16 @@
   </form>
 </div>
 
+<% if !@errors.nil? %>
+  <% if @errors.any? %>
+    <div class="error-explanation">
+      <ul>
+      <% @errors.each do |msg| %>
+        <li><span><%= msg %></span></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <% @errors.clear %>
+<% end %>
+

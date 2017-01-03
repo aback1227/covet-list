@@ -4,6 +4,7 @@ class UsersController < ApplicationController
     if logged_in?
       redirect "/user/#{current_user.slug}"
     else
+      @errors = session[:errors]
       erb :'/user/create_user'
     end
   end
@@ -14,6 +15,7 @@ class UsersController < ApplicationController
       session[:user_id] = user.id
       redirect "/user/#{current_user.slug}"
     else 
+      session[:errors] = user.errors.full_messages
       redirect "/signup"
     end
   end

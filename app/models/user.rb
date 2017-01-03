@@ -14,5 +14,14 @@ class User < ActiveRecord::Base
   def self.find_by_slug(slug)
     self.all.find {|user| user.slug == slug}
   end
+
+  def firstname=(s)
+    write_attribute(:firstname, s.to_s.titleize)
+  end
+
+  def lastname=(s)
+    write_attribute(:lastname, s.to_s.titleize)
+  end
+
 end
 

@@ -1,8 +1,9 @@
 class WishItemsController < ApplicationController
 
-  # get '/wishitems/:id' do
-  #   erb :'/wishitem/show_wishitem'
-  # end
+  get '/wishlists/:id/add_item' do
+    @wishlist = current_wishlist
+    erb :'/wishitem/create_wishitem'
+  end
 
   get '/wishlists/:id/wishitems' do
     @wishlist = current_wishlist

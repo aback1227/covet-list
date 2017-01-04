@@ -1,0 +1,21 @@
+<form method="POST" action="/wishlists/<%=@wishlist.id%>">
+  <div class="form-group">
+    <input class="form-control" type="text" placeholder="Add a title" name="title">
+  </div>
+  <div class="form-group">
+    <input class="form-control" type="text" placeholder="Add a url" name="url"></input>
+  </div>
+  <div class="form-group">
+    <input class="form-control" type="integer" placeholder="Add a quantity" name="quantity"></input>
+  </div>
+  <div class="form-group">
+    <input class="form-control" type="integer" placeholder="Add a price" name="price"></input>
+  </div>
+  <div class="form-group">
+    <input class="form-control" type="integer" placeholder="Add a image url" name="image"></input>
+  </div>
+  <div class="form-group">
+    <textarea class="form-control" type="integer" placeholder="Notes" name="note" rows="2"></textarea>
+  </div>
+  <button type="submit" class="btn btn-primary btn-block btn-sm">Add</button>
+</form>

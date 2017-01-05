@@ -7,43 +7,15 @@
 <div class="container">
   <div class="row">
     <% if current_user == @wishlist.user %>
-      <div class="col-sm-4 col-md-4 panel panel-default" style="margin:0 5px; margin-bottom: 5px">
-        <a href="#collapseForm" data-toggle="collapse">Add to list</a>
-        <div class="collapse" id="collapseForm" style="padding: 10px">
-          <div class="row">
-            <div class="col-md-12" style="padding: 10px">
-              <form method="POST" action="/wishlists/<%=@wishlist.id%>">
-                <div class="form-group">
-                  <input class="form-control" type="text" placeholder="Add a title" name="title">
-                </div>
-                <div class="form-group">
-                  <input class="form-control" type="text" placeholder="Add a url" name="url"></input>
-                </div>
-                <div class="form-group">
-                  <input class="form-control" type="integer" placeholder="Add a quantity" name="quantity"></input>
-                </div>
-                <div class="form-group">
-                  <input class="form-control" type="integer" placeholder="Add a price" name="price"></input>
-                </div>
-                <div class="form-group">
-                  <input class="form-control" type="integer" placeholder="Add a image url" name="image"></input>
-                </div>
-                <div class="form-group">
-                  <textarea class="form-control" type="integer" placeholder="Notes" name="note" rows="2"></textarea>
-                </div>
-                <button type="submit" class="btn btn-primary btn-block btn-sm">Add</button>
-              </form>
-            </div>
-          </div><!--row-->
-        </div>
+      <div class="col-sm-4 col-md-4 panel panel-default text-left" style="margin:0 5px; margin-bottom: 5px; padding-top: 10px">
+        <p><strong>Title:</strong> <%= @wishlist.title %></p>
+        <p><strong>Description:</strong> <%= @wishlist.description %></p>
       </div>
 
       <div class="text-left panel panel-default col-sm-7 col-md-7" style="padding: 10px 10px 0px 10px; margin: 0 5px; margin-bottom: 10px">
-        <p><strong>Title:</strong> <%= @wishlist.title %></p>
-        <p><strong>Description:</strong> <%= @wishlist.description %></p>
         <div class="row" style="padding: 10px 10px 0px 10px">
           <% @wishlist.wish_items.each do |wishitem| %>
-            <div class="col-md-12 panel panel-info" style="padding: 0px">
+            <div class="col-md-12 panel panel-default" style="padding: 0px">
               <div class="panel-heading">
                 <%= wishitem.title %>
                 <div class="edit-glyphicons pull-right">

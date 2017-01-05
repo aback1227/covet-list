@@ -7,9 +7,10 @@
 <div class="container">
   <div class="row">
     <% if current_user == @wishlist.user %>
-      <div class="col-sm-4 col-md-4 panel panel-default text-left" style="margin:0 5px; margin-bottom: 5px; padding-top: 10px">
+      <div class="col-sm-4 col-md-4 panel panel-default text-left" style="margin:0 5px; margin-bottom: 5px; padding: 10px">
         <p><strong>Title:</strong> <%= @wishlist.title %></p>
         <p><strong>Description:</strong> <%= @wishlist.description %></p>
+        <div class="text-center"><a class="btn btn-primary btn-xs" href="/wishlists/<%=@wishlist.id%>/add_item" role="button">Add item</a></div>
       </div>
 
       <div class="text-left col-sm-7 col-md-7" style="margin: 0 5px; margin-bottom: 10px">

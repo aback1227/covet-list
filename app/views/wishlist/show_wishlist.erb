@@ -12,8 +12,8 @@
         <p><strong>Description:</strong> <%= @wishlist.description %></p>
       </div>
 
-      <div class="text-left panel panel-default col-sm-7 col-md-7" style="padding: 10px 10px 0px 10px; margin: 0 5px; margin-bottom: 10px">
-        <div class="row" style="padding: 10px 10px 0px 10px">
+      <div class="text-left col-sm-7 col-md-7" style="margin: 0 5px; margin-bottom: 10px">
+        <div class="row">
           <% @wishlist.wish_items.each do |wishitem| %>
             <div class="col-md-12 panel panel-default" style="padding: 0px">
               <div class="panel-heading">

@@ -1,8 +1,12 @@
 class WishItemsController < ApplicationController
 
   get '/wishlists/:id/add_item' do
-    @wishlist = current_wishlist
-    erb :'/wishitem/create_wishitem'
+    if logged_in?
+      @wishlist = current_wishlist
+      erb :'/wishitem/create_wishitem'
+    else
+      redirect 'login'
+    end
   end
 
   get '/wishlists/:id/wishitems' do

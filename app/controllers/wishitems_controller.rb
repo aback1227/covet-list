@@ -2,8 +2,12 @@ class WishItemsController < ApplicationController
 
   get '/wishlists/:id/add_item' do
     if logged_in?
-      @wishlist = current_wishlist
-      erb :'/wishitem/create_wishitem'
+      if current_user == current_wishlist.user
+        @wishlist = current_wishlist
+        erb :'/wishitem/create_wishitem'
+      else 
+        redirect "wishlists/#{current_wishlist.id}/wishitems"
+      end
     else
       redirect 'login'
     end
@@ -16,8 +20,12 @@ class WishItemsController < ApplicationController
 
   get '/wishitems/:id/edit' do
     if logged_in?
-      @wishitem = WishItem.find_by_id(params[:id])
-      erb :'/wishitem/edit_wishitem'
+      if current_user == current_wishlist.user
+        @wishitem = WishItem.find_by_id(params[:id])
+        erb :'/wishitem/edit_wishitem'
+      else
+        redirect "wishlists/#{current_wishlist.id}/wishitems"
+      end
     else
       redirect '/login'
     end

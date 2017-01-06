@@ -6,19 +6,21 @@
 
 <div class="container">
   <div class="row">
-    <% if current_user == @wishlist.user %>
-      <div class="col-sm-4 col-md-4 panel panel-default text-left" style="margin:0 5px; margin-bottom: 5px; padding: 10px">
-        <p><strong>Title:</strong> <%= @wishlist.title %></p>
-        <p><strong>Description:</strong> <%= @wishlist.description %></p>
+    <div class="col-sm-4 col-md-4 panel panel-default text-left" style="margin:0 5px; margin-bottom: 5px; padding: 10px">
+      <p><strong>Title:</strong> <%= @wishlist.title %></p>
+      <p><strong>Description:</strong> <%= @wishlist.description %></p>
+      <% if current_user == @wishlist.user %>
         <div class="text-center"><a class="btn btn-primary btn-xs" href="/wishlists/<%=@wishlist.id%>/add_item" role="button">Add item</a></div>
-      </div>
+      <% end %>
+    </div>
 
-      <div class="text-left col-sm-7 col-md-7" style="margin: 0 5px; margin-bottom: 10px">
-        <div class="row">
-          <% @wishlist.wish_items.each do |wishitem| %>
-            <div class="col-md-12 panel panel-default" style="padding: 0px">
-              <div class="panel-heading">
-                <%= wishitem.title %>
+    <div class="text-left col-sm-7 col-md-7" style="margin: 0 5px; margin-bottom: 10px">
+      <div class="row">
+        <% @wishlist.wish_items.each do |wishitem| %>
+          <div class="col-md-12 panel panel-default" style="padding: 0px">
+            <div class="panel-heading">
+              <%= wishitem.title %>
+              <% if current_user == @wishlist.user %>
                 <div class="edit-glyphicons pull-right">
                   <form method="POST" action="/wishitems/<%=wishitem.id%>/delete" onsubmit="return confirm('Are you sure you want to delete?')">
                     <a href="/wishitems/<%=wishitem.id%>/edit" class="btn btn-primary btn-xs" role="button"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a>
@@ -26,55 +28,26 @@
                     <input class="btn btn-danger btn-xs" type="submit" name="delete" value="Delete">
                   </form>
                 </div>
-              </div><!--panel-heading-->
-              <div class="panel-body">
-                <div class="row">
-                  <div class="col-lg-6 col-md-5 col-sm-6 col-xs-6">
-                    <img class="img-thumbnail img-fluid" src="<%= wishitem.image %>">
-                  </div><!--col-md-4-->
-                  <div class="col-lg-6 col-md-7 col-sm-6 col-xs-6">
-                    <ul class="list-unstyled">
-                      <li><label>Price:</label> $<%= wishitem.price %></li>
-                      <li><label>URL:</label> <a href="<%= wishitem.url %>">Product page</a></li>
-                      <li><label>Quantity:</label> <%= wishitem.quantity %></li>
-                      <li><label>Note:</label> <%= wishitem.note %></li>
-                    </ul>
-                  </div>
-                </div><!--row-->
-              </div><!--panel-body-->
-            </div><!--col-md-12-->
-          <% end %>
-        </div>
+              <% end %>
+            </div><!--panel-heading-->
+            <div class="panel-body">
+              <div class="row">
+                <div class="col-lg-6 col-md-5 col-sm-6 col-xs-6">
+                  <img class="img-thumbnail img-fluid" src="<%= wishitem.image %>">
+                </div><!--col-md-4-->
+                <div class="col-lg-6 col-md-7 col-sm-6 col-xs-6">
+                  <ul class="list-unstyled">
+                    <li><label>Price:</label> $<%= wishitem.price %></li>
+                    <li><label>URL:</label> <a href="<%= wishitem.url %>">Product page</a></li>
+                    <li><label>Quantity:</label> <%= wishitem.quantity %></li>
+                    <li><label>Note:</label> <%= wishitem.note %></li>
+                  </ul>
+                </div>
+              </div><!--row-->
+            </div><!--panel-body-->
+          </div><!--col-md-12-->
+        <% end %>
       </div>
-    <% else %>
-      <div class="text-left panel panel-default col-sm-10 col-md-8 col-centered" style="padding: 10px;">
-        <p><strong>Title:</strong> <%= @wishlist.title %></p>
-        <p><strong>Description:</strong> <%= @wishlist.description %></p>
-        <div class="row" style="padding: 10px 10px 0px 10px">
-          <% @wishlist.wish_items.each do |wishitem| %>
-            <div class="col-md-12 panel panel-info" style="padding: 0px">
-              <div class="panel-heading">
-                <%= wishitem.title %>
-              </div><!--panel-heading-->
-              <div class="panel-body">
-                <div class="row">
-                  <div class="col-lg-6 col-md-5 col-sm-6 col-xs-6">
-                    <img class="img-thumbnail img-fluid" src="<%= wishitem.image %>">
-                  </div><!--col-md-4-->
-                  <div class="col-lg-6 col-md-7 col-sm-6 col-xs-6">
-                    <ul class="list-unstyled">
-                      <li><label>Price:</label> $<%= wishitem.price %></li>
-                      <li><label>URL:</label> <a href="<%= wishitem.url %>">Product page</a></li>
-                      <li><label>Quantity:</label> <%= wishitem.quantity %></li>
-                      <li><label>Note:</label> <%= wishitem.note %></li>
-                    </ul>
-                  </div>
-                </div><!--row-->
-              </div><!--panel-body-->
-            </div><!--col-md-12-->
-          <% end %>
-        </div>
-      </div>
-    <% end %>
+    </div>
   </div><!--row-->
 </div><!--container-->

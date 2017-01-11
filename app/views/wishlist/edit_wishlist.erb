@@ -6,15 +6,15 @@
 
 <div class="col-md-4 col-centered" style="padding: 0px 20px 20px 20px">
   <h2>Edit List</h2>
-  <form method="POST" action="/wishlists/<%=@wishlist.id%>">
+  <form method="POST" action="/wishlists/<%=current_wishlist.id%>">
     <input id="hidden" type="hidden" name="_method" value="patch">
     <div class="form-group text-left">
       <label for="title">Title</label>
-      <input class="form-control" type="text" value="<%=@wishlist.title%>" name="title">
+      <input class="form-control" type="text" value="<%=current_wishlist.title%>" name="title">
     </div>
     <div class="form-group text-left">
       <label for="description">Description</label>
-      <input class="form-control" type="text" value="<%=@wishlist.description%>" name="description"></input>
+      <input class="form-control" type="text" value="<%=current_wishlist.description%>" name="description"></input>
     </div>
     <button type="submit" class="btn btn-primary btn-block btn-sm">Save Changes</button>
   </form>

@@ -13,7 +13,6 @@ class WishItemsController < ApplicationController
   end
 
   get '/wishlists/:id/wishitems' do
-    @wishlist = current_wishlist
     erb :'/wishlist/show_wishlist'
   end
 

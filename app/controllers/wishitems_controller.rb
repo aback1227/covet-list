@@ -21,7 +21,6 @@ class WishItemsController < ApplicationController
   get '/wishitems/:id/edit' do
     if logged_in?
       if current_user == current_wishitem.wishlist.user
-        @wishitem = WishItem.find_by_id(params[:id])
         erb :'/wishitem/edit_wishitem'
       else
         redirect "wishlists/#{current_wishlist.id}/wishitems"

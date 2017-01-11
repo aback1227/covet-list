@@ -1,38 +1,38 @@
 <ol class="breadcrumb" style="margin-top: -30px">
   <li><a href="/">Home</a></li>
   <li><a href="/user/<%=current_user.username%>"><%=current_user.username%></a></li>
-  <li><a href="/wishlists/<%=@wishitem.wishlist.id%>/wishitems"><%=@wishitem.wishlist.title%></a></li>
+  <li><a href="/wishlists/<%=current_wishitem.wishlist.id%>/wishitems"><%=current_wishitem.wishlist.title%></a></li>
   <li class="active">Edit Item</li>
 </ol>
 
 <div class="col-md-4 col-centered" style="padding: 0px 20px 20px 20px">
   <h2>Edit Item</h2>
-  <form method="POST" action="/wishitems/<%=@wishitem.id%>">
+  <form method="POST" action="/wishitems/<%=current_wishitem.id%>">
     <input id="hidden" type="hidden" name="_method" value="patch">
     <div class="form-group text-left">
       <label for="title">Title</label>
-      <input class="form-control" type="text" value="<%=@wishitem.title%>" name="title">
+      <input class="form-control" type="text" value="<%=current_wishitem.title%>" name="title">
     </div>
     <div class="form-group text-left">
       <label for="url">URL</label>
-      <input class="form-control" type="text" value="<%=@wishitem.url%>" name="url"></input>
+      <input class="form-control" type="text" value="<%=current_wishitem.url%>" name="url"></input>
     </div>
     <div class="form-group text-left">
       <label for="quantity">Quantity</label>
-      <input class="form-control" type="integer" value="<%=@wishitem.quantity%>" name="quantity"></input>
+      <input class="form-control" type="integer" value="<%=current_wishitem.quantity%>" name="quantity"></input>
     </div>
     <div class="form-group text-left">
       <label for="price">Price</label>
-      <input class="form-control" type="integer" value="<%=@wishitem.price%>" name="price"></input>
+      <input class="form-control" type="integer" value="<%=current_wishitem.price%>" name="price"></input>
     </div> 
     <div class="form-group text-left">
       <label for="image">Image URL</label><br>
-      <img style="margin: 10px" src="<%=@wishitem.image%>" width="100px">
-      <input class="form-control" type="integer" value="<%=@wishitem.image%>" name="image"></input>
+      <img style="margin: 10px" src="<%=current_wishitem.image%>" width="100px">
+      <input class="form-control" type="integer" value="<%=current_wishitem.image%>" name="image"></input>
     </div>
     <div class="form-group text-left">
       <label for="notes">Notes</label>
-      <textarea class="form-control" type="integer" name="note" rows="2"><%=@wishitem.note%></textarea>
+      <textarea class="form-control" type="integer" name="note" rows="2"><%=current_wishitem.note%></textarea>
     </div>
     <button type="submit" class="btn btn-primary btn-block btn-sm">Save Changes</button>
   </form>

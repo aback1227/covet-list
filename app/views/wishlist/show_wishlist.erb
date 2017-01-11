@@ -38,7 +38,7 @@
                 <div class="col-lg-6 col-md-7 col-sm-6 col-xs-6">
                   <ul class="list-unstyled">
                     <li><label>Price:</label> $<%= wishitem.price %></li>
-                    <li><label>URL:</label> <a href="<%= wishitem.url %>"><%=wishitem.url.match(/\..*\./).to_s.split(".")[1]%></a></li>
+                    <li><label>Product page:</label> <a href="<%= wishitem.url %>"><%=wishitem.url.match(/\..*\./).to_s.split(".")[1]%></a></li>
                     <li><label>Quantity:</label> <%= wishitem.quantity %></li>
                     <li><label>Note:</label> <%= wishitem.note %></li>
                   </ul>

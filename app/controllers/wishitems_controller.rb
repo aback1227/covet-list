@@ -3,7 +3,6 @@ class WishItemsController < ApplicationController
   get '/wishlists/:id/add_item' do
     if logged_in?
       if current_user == current_wishlist.user
-        @wishlist = current_wishlist
         erb :'/wishitem/create_wishitem'
       else 
         redirect "wishlists/#{current_wishlist.id}/wishitems"

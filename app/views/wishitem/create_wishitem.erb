@@ -1,12 +1,12 @@
 <ol class="breadcrumb" style="margin-top: -30px">
   <li><a href="/">Home</a></li>
   <li><a href="/user/<%=current_user.username%>"><%=current_user.username%></a></li>
-  <li><a href="/wishlists/<%=@wishlist.id%>/wishitems"><%=@wishlist.title%></a></li>
+  <li><a href="/wishlists/<%=current_wishlist.id%>/wishitems"><%=current_wishlist.title%></a></li>
   <li class="active">Add Item</li>
 </ol>
 
 <div class="col-md-4 col-centered">
-  <form method="POST" action="/wishlists/<%=@wishlist.id%>/wishitems">
+  <form method="POST" action="/wishlists/<%=current_wishlist.id%>/wishitems">
     <div class="form-group">
       <input class="form-control" type="text" placeholder="Add a title" name="title">
     </div>

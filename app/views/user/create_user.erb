@@ -1,5 +1,20 @@
-<h3>Sign up today</h3>
-<div class="col-lg-3 col-md-4 col-sm-6 col-xs-8 col-centered">
+<h3>Sign up today</h3><br>
+
+<% if @errors.any? %>
+  <div class="row">
+    <div class="col-xs-8 col-md-4 col-sm-4 col-centered alert alert-danger" style="margin-left: auto; margin-right: auto; margin-bottom: 20px;">
+      <h4>Please review the following errors:</h3>
+      <ul>
+        <% @errors.each do |msg| %>
+          <li><span><%= msg %></span></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+<% end %>
+<% @errors.clear %>
+
+<div class="col-lg-3 col-md-4 col-sm-6 col-xs-8 col-centered" style="margin-bottom: 20px;">
   <form class="form-signup" method="POST" action="/signup">
     <div class="form-group">
       <input class="form-control" type="text" placeholder="Email" name="email">
@@ -23,17 +38,3 @@
     <button type="submit" class="btn btn-primary btn-block btn-lg">Sign Up</button>
   </form>
 </div>
-
-<% if !@errors.nil? %>
-  <% if @errors.any? %>
-    <div class="error-explanation">
-      <ul>
-      <% @errors.each do |msg| %>
-        <li><span><%= msg %></span></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-  <% @errors.clear %>
-<% end %>
-

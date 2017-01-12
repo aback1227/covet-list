@@ -48,3 +48,7 @@ class UsersController < ApplicationController
     redirect "/"
   end
 end
+
+helpers do
+
+end

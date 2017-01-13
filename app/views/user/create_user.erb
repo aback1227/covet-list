@@ -1,18 +1,20 @@
 <h3>Sign up today</h3><br>
 
-<% if @errors.any? %>
-  <div class="row">
-    <div class="col-xs-8 col-md-4 col-sm-4 col-centered alert alert-danger" style="margin-left: auto; margin-right: auto; margin-bottom: 20px;">
-      <h4>Please review the following errors:</h3>
-      <ul>
-        <% @errors.each do |msg| %>
-          <li><span><%= msg %></span></li>
-        <% end %>
-      </ul>
+<% if !@errors.nil? %>
+  <% if @errors.any? %>
+    <div class="row">
+      <div class="col-xs-8 col-md-4 col-sm-6 col-lg-4 col-centered alert alert-danger" style="margin-left: auto; margin-right: auto; margin-bottom: 20px;">
+        <h4>Please review the following errors:</h3>
+        <ul>
+          <% @errors.each do |msg| %>
+            <li><span><%= msg %></span></li>
+          <% end %>
+        </ul>
+      </div>
     </div>
-  </div>
+  <% end %>
+  <% @errors.clear %>
 <% end %>
-<% @errors.clear %>
 
 <div class="col-lg-3 col-md-4 col-sm-6 col-xs-8 col-centered" style="margin-bottom: 20px;">
   <form class="form-signup" method="POST" action="/signup">

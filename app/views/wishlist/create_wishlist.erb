@@ -4,7 +4,18 @@
   <li class="active">Make List</li>
 </ol>
 
-<div class="col-md-4 col-centered">
+<% if !@errors.nil? %>
+  <% if @errors.any? %>
+    <div class="row">
+      <div class="col-xs-8 col-md-4 col-sm-6 col-lg-3 col-centered alert alert-danger" style="margin-left: auto; margin-right: auto; margin-bottom: 20px;">
+        <%= @errors[0] %>
+      </div>
+    </div>
+  <% end %>
+  <% @errors.clear %>
+<% end %>
+
+<div class="col-lg-3 col-md-4 col-sm-6 col-xs-8 col-centered">
   <form method="POST" action="/wishlists">
     <div class="form-group">
       <input class="form-control" type="text" placeholder="Add a title" name="title">

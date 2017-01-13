@@ -1,5 +1,6 @@
 class WishlistsController < ApplicationController
   get '/wishlists/new' do
+    @errors = session[:errors]
     erb :'/wishlist/create_wishlist'
   end
 
@@ -10,6 +11,7 @@ class WishlistsController < ApplicationController
       if wishlist.save
         redirect "/user/#{current_user.slug}"
       else
+        session[:errors] = wishlist.errors.full_messages
         redirect '/wishlists/new'
       end
     else

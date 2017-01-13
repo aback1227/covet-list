@@ -4,7 +4,7 @@ gem 'sinatra-activerecord', :require => 'sinatra/activerecord'
 gem 'rake'
 gem 'bcrypt'
 gem 'require_all'
-gem 'rack-flash3'
+gem 'sinatra-flash'
 
 group :development do 
   gem 'shotgun'

@@ -1,4 +1,12 @@
-<h3>Log In to CovetList</h3>
+<h3>Log In to CovetList</h3><br>
+
+<% if flash[:notice] %>
+  <div class="col-xs-8 col-sm-5 col-md-4 col-lg-3 col-centered alert alert-danger" style="margin-bottom: 20px">
+    <span><%= flash[:notice] %></span>
+  </div>
+<% end %>
+
+
 <div class="col-lg-3 col-md-4 col-sm-6 col-xs-8 col-centered">
   <form class="form-signup" method="POST" action="/login">
     <div class="form-group">

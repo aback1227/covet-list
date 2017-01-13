@@ -1,4 +1,7 @@
+require 'sinatra/flash'
+
 class UsersController < ApplicationController
+  register Sinatra::Flash
 
   get "/signup" do
     if logged_in?
@@ -34,6 +37,7 @@ class UsersController < ApplicationController
       session[:user_id] = user.id
       redirect "/user/#{current_user.slug}"
     else
+      flash[:notice] = "Login unsuccessful"
       redirect "/login"
     end
   end
@@ -47,8 +51,4 @@ class UsersController < ApplicationController
     session.clear
     redirect "/"
   end
-end
-
-helpers do
-
 end

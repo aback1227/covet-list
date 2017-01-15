@@ -1,4 +1,7 @@
+require 'sinatra/flash'
+
 class ApplicationController < Sinatra::Base
+  register Sinatra::Flash
 
   configure do
       set :views, "app/views"

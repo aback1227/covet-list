@@ -1,7 +1,4 @@
-require 'sinatra/flash'
-
 class UsersController < ApplicationController
-  register Sinatra::Flash
 
   get "/signup" do
     if logged_in?

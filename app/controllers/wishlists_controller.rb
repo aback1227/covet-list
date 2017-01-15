@@ -34,6 +34,7 @@ class WishlistsController < ApplicationController
       if wishlist_updated
         redirect "/user/#{wishlist.user.slug}"
       else
+        flash[:notice] = "Title can't be blank"
         redirect "/wishlists/#{current_wishlist.id}/edit"
       end
     else

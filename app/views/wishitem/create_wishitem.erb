@@ -5,7 +5,27 @@
   <li class="active">Add Item</li>
 </ol>
 
-<div class="col-md-4 col-centered">
+<h3>Add new item</h3><br>
+
+<% if !@errors.nil? %>
+  <% if @errors.any? %>
+    <div class="row">
+      <div class="col-xs-8 col-md-4 col-sm-6 col-lg-4 col-centered alert alert-danger" style="margin-left: auto; margin-right: auto; margin-bottom: 20px;">
+        <h4>Please review the following errors:</h3>
+        <div style="width: 50%; margin-left: auto; margin-right: auto;">
+        <ul>
+          <% @errors.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+        </div>
+      </div>
+    </div>
+  <% end %>
+  <% @errors.clear %>
+<% end %>
+
+<div class="col-lg-3 col-md-4 col-sm-6 col-xs-8 col-centered">
   <form method="POST" action="/wishlists/<%=current_wishlist.id%>/wishitems">
     <div class="form-group">
       <input class="form-control" type="text" placeholder="Add a title" name="title">

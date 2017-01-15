@@ -3,6 +3,7 @@ class WishItemsController < ApplicationController
   get '/wishlists/:id/add_item' do
     if logged_in?
       if current_user == current_wishlist.user
+        @errors = session[:errors]
         erb :'/wishitem/create_wishitem'
       else 
         redirect "wishlists/#{current_wishlist.id}/wishitems"
@@ -35,7 +36,8 @@ class WishItemsController < ApplicationController
       if wishitem.save
         redirect "/wishlists/#{wishitem.wishlist.id}/wishitems"
       else 
-        redirect '/wishlists'
+        session[:errors] = wishitem.errors.full_messages
+        redirect "/wishlists/#{wishitem.wishlist.id}/add_item"
       end
     else
       redirect '/login'

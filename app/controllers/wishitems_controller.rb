@@ -47,6 +47,7 @@ class WishItemsController < ApplicationController
       if wishitem_updated
         redirect "/wishlists/#{current_wishitem.wishlist.id}/wishitems"
       else 
+        flash[:notice] = "Title, quantity, and image fields can't be blank"
         redirect "/wishitems/#{current_wishitem.id}/edit"
       end
     else

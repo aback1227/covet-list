@@ -3,9 +3,9 @@
 <% if !@errors.nil? %>
   <% if @errors.any? %>
     <div class="row">
-      <div class="col-xs-8 col-md-4 col-sm-6 col-lg-4 col-centered alert alert-danger" style="margin-left: auto; margin-right: auto; margin-bottom: 20px;">
+      <div class="col-xs-8 col-md-4 col-sm-6 col-lg-4 col-centered alert alert-danger" style="margin: 0 auto 20px auto;">
         <h4>Please review the following errors:</h3>
-        <div style="text-align: left; display: inline-block;"">
+        <div style="text-align: left; display: inline-block;">
           <ul>
             <% @errors.each do |msg| %>
               <li><%= msg %></li>

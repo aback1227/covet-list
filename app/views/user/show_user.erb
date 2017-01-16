@@ -5,10 +5,12 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-sm-4 col-md-4 panel panel-default" style="padding-bottom: 10px">
+    <div class="col-sm-4 col-md-4 panel panel-default" style="padding-bottom: 10px;">
       <h4 class="text-center"><%=@user.username%></h4>
+      <div style="text-align: left; display: inline-block;">
         <p><strong>Name:</strong> <%= @user.firstname%> <%= @user.lastname%></p>
-        <p><strong>Birthday:</strong> <%= @user.birthday.strftime("%B %d, %Y")%></p>
+        <p><strong>Birthday:</strong> <%= @user.birthday.strftime("%b %d, %Y")%></p>
+      </div>
       <% if current_user == @user %>
         <div class="text-center">
           <a role="button" class="btn btn-primary btn-xs" href="/wishlists/new">Make new list</a>

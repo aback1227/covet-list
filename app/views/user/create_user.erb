@@ -1,9 +1,9 @@
-<h3>Sign up today</h3><br>
+<h3>Sign up today</h3>
 
 <% if !@errors.nil? %>
   <% if @errors.any? %>
     <div class="row">
-      <div class="col-xs-8 col-md-4 col-sm-6 col-lg-4 col-centered alert alert-danger" style="margin: 0 auto 20px auto;">
+      <div class="col-xs-8 col-md-4 col-sm-6 col-lg-4 col-centered alert alert-danger" style="margin: 0 auto 0 auto;">
         <h4>Please review the following errors:</h3>
         <div style="text-align: left; display: inline-block;">
           <ul>
@@ -18,7 +18,7 @@
   <% @errors.clear %>
 <% end %>
 
-<div class="col-lg-3 col-md-4 col-sm-6 col-xs-8 col-centered" style="margin-bottom: 20px;">
+<div class="col-lg-3 col-md-4 col-sm-6 col-xs-8 col-centered" style="margin-top: 20px;">
   <form class="form-signup" method="POST" action="/signup">
     <div class="form-group">
       <input class="form-control" type="text" placeholder="Email" name="email">

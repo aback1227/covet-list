@@ -10,7 +10,10 @@
       <p><strong>Title:</strong> <%= current_wishlist.title %></p>
       <p><strong>Description:</strong> <%= current_wishlist.description %></p>
       <% if current_user == current_wishlist.user %>
-        <div class="text-center"><a class="btn btn-primary btn-xs" href="/wishlists/<%=current_wishlist.id%>/add_item" role="button">Add item</a></div>
+        <div class="text-center">
+          <a class="btn btn-primary btn-xs" href="/wishlists/<%=current_wishlist.id%>/edit" role="button">Edit title/description</a>
+          <a class="btn btn-primary btn-xs" href="/wishlists/<%=current_wishlist.id%>/add_item" role="button">Add item</a>
+        </div>
       <% end %>
     </div>
 

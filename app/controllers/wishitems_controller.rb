@@ -22,7 +22,7 @@ class WishItemsController < ApplicationController
       if current_user == current_wishitem.wishlist.user
         erb :'/wishitem/edit_wishitem'
       else
-        redirect "wishlists/#{current_wishlist.id}/wishitems"
+        redirect "wishlists/#{current_wishitem.wishlist.id}/wishitems"
       end
     else
       redirect '/login'

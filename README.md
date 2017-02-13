@@ -1,6 +1,8 @@
 # CovetList
 
-CovetList
+CovetList is an app that helps you create and organize your wishlist. You can create multiple wishlists for different purposes and share them with your friends and family.
+
+You can view a walkthrough of this app at [https://youtu.be/24b7tHHkjr4](Youtube).
 
 ## Usage & Development
 

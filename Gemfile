@@ -7,10 +7,7 @@ gem 'rake'
 gem 'bcrypt'
 gem 'require_all'
 gem 'sinatra-flash'
-
-group :production do
-  gem 'pg', '0.15.1'
-end
+gem 'pg', '0.18.1'
 
 group :development do 
   gem 'shotgun'

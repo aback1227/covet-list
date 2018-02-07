@@ -22,7 +22,7 @@ GEM
     method_source (0.9.0)
     minitest (5.11.3)
     mustermann (1.0.1)
-    pg (0.15.1)
+    pg (0.18.1)
     pry (0.11.3)
       coderay (~> 1.1.0)
       method_source (~> 0.9.0)
@@ -70,7 +70,7 @@ PLATFORMS
 DEPENDENCIES
   activerecord
   bcrypt
-  pg (= 0.15.1)
+  pg (= 0.18.1)
   pry
   rake
   require_all

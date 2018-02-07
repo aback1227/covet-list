@@ -7,7 +7,10 @@ gem 'rake'
 gem 'bcrypt'
 gem 'require_all'
 gem 'sinatra-flash'
-gem 'sqlite3'
+
+group :production do
+  gem 'pg', '0.15.1'
+end
 
 group :development do 
   gem 'shotgun'
